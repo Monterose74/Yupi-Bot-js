@@ -22,11 +22,11 @@ module.exports.run = async(client, message, args) => {
     let embed6 = new MessageEmbed()
     .setColor()
     .setTitle('Ошибка')
-      .setDescription('<a:no:871662817240039435> Укажите Орёл/Решка.')
+    .setDescription('**Недостаточно монет для ставки.**')
     let embed7 = new MessageEmbed()
     .setColor()
     .setTitle('Ошибка')
-    .setDescription('**.**')
+    .setDescription('**<a:no:871662817240039435> Укажите Орёл/Решка.**')
     let result = rando_flip[Math.floor(Math.random() * rando_flip.length)]
     let member = message.guild.member(message.mentions.users.first() || message.author)
     let data = await User.findOne({ guildID: message.guild.id, userID: member.user.id });
