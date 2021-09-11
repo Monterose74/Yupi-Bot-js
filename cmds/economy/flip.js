@@ -36,7 +36,7 @@ module.exports.run = async(client, message, args) => {
     if(args[1] != 'Орёл' & args[1] != 'Решка') return message.channel.send(embed7)
     if(args[0] < 0) return;
     if (data.money >= args[0]) {
-      if (result == 'Орёл') {
+      if (result == args[1]) {
          message.channel.send(embed);
          data.money -= Math.floor(parseInt(args[0]));
          data.money += Math.floor(parseInt(args[0]*2));
