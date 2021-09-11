@@ -40,7 +40,7 @@ module.exports.run = async (client, message, args) => {
     .addField(`Модератор: `, `${message.author}`, true)
     .addField(`Выдал вам денег в количестве: `, `${args[1]}`, true)
     .addField(`По Причине: `, `${reason}`, true)
-    .setTimestamp(49695)
+    .setTimestamp()
     
     member.send(memchan)
 }
