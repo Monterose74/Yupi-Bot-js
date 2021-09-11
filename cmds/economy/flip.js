@@ -22,13 +22,18 @@ module.exports.run = async(client, message, args) => {
     let embed6 = new MessageEmbed()
     .setColor()
     .setTitle('Ошибка')
-    .setDescription('**Недостаточно монет для ставки.**')
+      .setDescription('<a:no:871662817240039435> Укажите Орёл/Решка.')
+    let embed7 = new MessageEmbed()
+    .setColor()
+    .setTitle('Ошибка')
+    .setDescription('**.**')
     let result = rando_flip[Math.floor(Math.random() * rando_flip.length)]
     let member = message.guild.member(message.mentions.users.first() || message.author)
     let data = await User.findOne({ guildID: message.guild.id, userID: member.user.id });
 
     if(!data) return client.nodb(member.user);
     if(isNaN(args[0])) return message.channel.send(embed2);
+    if(args[1] != 'Орёл' & args[1] != 'Решка') return message.channel.send(embed7)
     if(args[0] < 0) return;
     if (data.money >= args[0]) {
       if (result == 'Орёл') {
