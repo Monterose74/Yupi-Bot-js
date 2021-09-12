@@ -7,6 +7,7 @@ const schema = mongoose.Schema({
     autorole: {type: String, default: "none"},
     _autorole: {type: String, default: "off"},
     modlogs: {type: String, default: "none"},
-    buy: {type: String, default: "no"}
+    buy: {type: String, default: "no"},
+    giuld_lvl: {type: Number, default: 1}
 });
 module.exports = mongoose.model("Guild", schema)
