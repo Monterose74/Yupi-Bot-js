@@ -33,7 +33,7 @@ module.exports.run = async(client, message, args) => {
 
     if(!data) return client.nodb(member.user);
     if(isNaN(args[0])) return message.channel.send(embed2);
-    if(args[1] != 'Орёл' & args[1] != 'Решка') return message.channel.send(embed7)
+    if(args[1] != 'Орёл' || args[1] != 'Решка') return message.channel.send(embed7)
     if(args[0] < 0) return;
     if (data.money >= args[0]) {
       if (result == args[1]) {
