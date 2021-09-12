@@ -6,7 +6,8 @@ const rando_flip = [
     'Орёл',
     'Решка',
     ]
-
+let data = await Guild.findOne({ guildID: message.guild.id });
+let prefix = data.prefix;
 module.exports.run = async(client, message, args) => {
     let embed = new MessageEmbed()
     .setColor()
@@ -14,7 +15,8 @@ module.exports.run = async(client, message, args) => {
     .setDescription(`<a:yes:871662816963198976> Вы выиграли ${args[0]*2} <:dollars:871667265093910548>`)
     let embed2 = new MessageEmbed()
     .setColor()
-    .setDescription(`<a:no:871662817240039435> Укажите сумму ставки.`)
+    .setDescription(`<a:no:871662817240039435> Ошибка!`)
+    .setFooter(`${prefix}flip <кол-во> <Орёл/Решка>`)
     let embed5 = new MessageEmbed()
     .setColor()
     .setTitle('Игра')
@@ -23,17 +25,13 @@ module.exports.run = async(client, message, args) => {
     .setColor()
     .setTitle('Ошибка')
     .setDescription('**Недостаточно монет для ставки.**')
-    let embed7 = new MessageEmbed()
-    .setColor()
-    .setTitle('Ошибка')
-    .setDescription('**<a:no:871662817240039435> Укажите Орёл/Решка.**')
     let result = rando_flip[Math.floor(Math.random() * rando_flip.length)]
     let member = message.guild.member(message.mentions.users.first() || message.author)
     let data = await User.findOne({ guildID: message.guild.id, userID: member.user.id });
 
     if(!data) return client.nodb(member.user);
-    if(isNaN(args[0])) return message.channel.send(embed2);
-    if(args[1] != 'Орёл' || args[1] != 'Решка') return message.channel.send(embed7)
+    if(isNaN(args[0]) || isNaN(args[1])) return message.channel.send(embed2);
+    if (args[1].toLowerCase() != 'орёл' || args[1].toLowerCase() != 'решка') return message.channel.send(embed2)
     if(args[0] < 0) return;
     if (data.money >= args[0]) {
       if (result == args[1]) {
