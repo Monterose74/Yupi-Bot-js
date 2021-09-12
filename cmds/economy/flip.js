@@ -26,14 +26,14 @@ module.exports.run = async (client, message, args) => {
   let embed7 = new MessageEmbed()
     .setColor()
     .setTitle('Ошибка')
-    .setDescription('**Минимальная ставка 1\nМаксимальная ставка: 99999999999999**')
+    .setDescription('**Минимальная ставка 1\nМаксимальная ставка: 999999999**')
   let result = rando_flip[Math.floor(Math.random() * rando_flip.length)]
   let member = message.guild.member(message.mentions.users.first() || message.author)
   let data = await User.findOne({ guildID: message.guild.id, userID: member.user.id });
 
   if (!data) return client.nodb(member.user);
   if (isNaN(args[0])) return message.channel.send(embed2);
-  if (args[0] < 0 || args[0] > 99999999999999) return message.channel.send(embed7);
+  if (args[0] < 1 || args[0] > 999999999) return message.channel.send(embed7);
   if (data.money >= args[0]) {
     if (result == 'Орёл') {
       message.channel.send(embed);
