@@ -16,7 +16,7 @@ global.Shop = require('./models/shop.js');
 global.Blacklist = require('./models/blacklist.js');
 mongoose.connect(config.dataURL, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.on('connected', () => {
-    console.log('[✅ DataBase] Connected!')
+console.log('[✅ DataBase] Connected!')
 })
 //Loading Folders Command
 const commands = {};
